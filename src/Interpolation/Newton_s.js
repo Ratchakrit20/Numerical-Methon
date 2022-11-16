@@ -142,7 +142,7 @@ export default class Newton_s extends React.Component{
           <form onSubmit={this.handleSubmit}>
           <div className='head'>
             <div >
-              <h1>&emsp;Newton's divided-differences&emsp;</h1>
+              <h1>&emsp;Newton's divided-differences &emsp;</h1>
               <label htmlFor='X'>&emsp;X :&emsp;</label>
               <Tooltip  title={'Input X here!'} placement="topLeft" overlayClassName="numeric-input">
                 <Input
