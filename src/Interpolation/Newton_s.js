@@ -171,7 +171,7 @@ export default class Newton_s extends React.Component{
                 size='30'
                 />
               </Tooltip>
-              &emsp;<Button onClick={this.handleChange1}>Calculate</Button>
+              &emsp;<Button onClick={this.handleChange1}>Input</Button>
             </div>
             <p></p>
             <div>
