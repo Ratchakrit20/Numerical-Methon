@@ -72,6 +72,7 @@ export default class Lagrange extends React.Component{
     // }
     C (x2,x1,x,y) {
       if(x2===0&&x1===0){
+        render("c0"+y[0])
           return y[0];
       }
       else if(x2-x1>1){
@@ -88,10 +89,12 @@ export default class Lagrange extends React.Component{
             for(var j=0;j<this.state.arrx.length;j++){
                 if(i!==j){
                     product = product*(x0-this.state.arrx[j])/(this.state.arrx[i]-this.state.arrx[j])
+                    
                 }
                 
             }
             ans = ans + product;
+            console.log("C"+ans)
         }
         this.state.ans = ans;
         console.log(ans);
