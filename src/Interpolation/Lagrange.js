@@ -94,7 +94,7 @@ export default class Lagrange extends React.Component{
                 
             }
             ans = ans + product;
-            console.log("C"+ans)
+            console.log("C"+ans);
         }
         this.state.ans = ans;
         console.log(ans);
