@@ -46,7 +46,7 @@ const menu1 = (
             {
               key: '1',
               label: (
-                <div><Link to="/Bisection">Crammer's Rule</Link></div>
+                <div><Link to="/Crammer">Crammer's Rule</Link></div>
               ),
             },
             {
@@ -64,13 +64,13 @@ const menu1 = (
             {
                 key: '4',
                 label: (
-                    <div><Link to="/Newton">Jacobi Method</Link></div>
+                    <div><Link to="/Jacobi">Jacobi Method</Link></div>
                 ),
             },
             {
                 key: '5',
                 label: (
-                    <div><Link to="/Newton">Gauss Seidel Method</Link></div>
+                    <div><Link to="/Gauss_si">Gauss Seidel Method</Link></div>
                 ),
             },
             {
@@ -106,6 +106,30 @@ const menu1 = (
           ]}
         />
       );
+      const menu3 = (
+        <Menu
+          items={[
+            {
+              key: '1',
+              label: (
+                <div><Link to="/">Least-Squares Regression</Link></div>
+              ),
+            },
+            {
+              key: '2',
+              label: (
+                <div><Link to="/">Polynomial Regression</Link></div>
+              ),
+            },
+            {
+              key: '3',
+              label: (
+                <div><Link to="/">Multiple Linear Regression</Link></div>
+              ),
+            }
+          ]}
+        />
+      );
 
 
 function Navbar(){
@@ -128,6 +152,9 @@ return (
             </Dropdown>
             <Dropdown overlay={menu2} placement="bottomLeft">
                 <Button ghost>Interpolation and Extrapolation</Button>
+            </Dropdown>
+            <Dropdown overlay={menu3} placement="bottomLeft">
+                <Button ghost>Regression</Button>
             </Dropdown>
         </Space> 
     </Space>     

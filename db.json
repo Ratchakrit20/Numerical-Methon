@@ -1,0 +1,15 @@
+{
+  "posts": [
+    { "xl": 1, "xr": 2, "func": "x^2+5" }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

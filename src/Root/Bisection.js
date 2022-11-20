@@ -3,11 +3,12 @@ import { render } from "@testing-library/react";
 import React from 'react'
 import {Tooltip,Input,Button} from 'antd'
 import Plotly from 'plotly.js-dist-min'
-
+import axios from 'axios'
 
 
 const Parser = require('expr-eval').Parser;
-
+const apiUrl ="https://NumerAPi.rratchakrit.repl.co/products";
+// const axios = require('axios').Axios;
 //var X,Y;
 class Bisection extends React.Component{
   constructor(props){
@@ -27,6 +28,33 @@ class Bisection extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.BisectionMethod=this.BisectionMethod.bind(this);
+    this.getstartdata=this.getstartdata.bind(this);
+  }
+  
+  getstartdata(){
+    axios.get("http://localhost:3001/posts")
+    .then(res => {
+      const data = res.data
+      console.log(data)
+      this.setState({xl:(res.data[0].xl)})
+      this.setState({xr:(res.data[0].xr)})
+      
+      this.setState({E:(res.data[0].func)})
+      console.log("XL: "+res.data[0].xl+"XR"+res.data[0]+"func"+res.data[0].func)
+  })
+    
+
+
+    // axios.get("https://numerapi.rratchakrit.repl.co/products")
+    // .then((response)=>{
+    //   this.setState({xl:response.data.products[0].xl});
+    //   // this.state.xl = response.products[0].xl;
+    //   console.log(response.products.xl)
+    // })
+    // .catch((error)=>{
+    //   this.state.xl = "";
+    //   console.log(error.data.products.xl)
+    // })
   }
   clear(event){
     //event.preventDefault()
@@ -245,6 +273,7 @@ class Bisection extends React.Component{
           <div>
               &emsp;<Button onClick={this.handleSubmit}>Calculate</Button>
               &emsp;<Button onClick={this.clear}>Clear</Button>
+              &emsp;<Button onClick={this.getstartdata}>API</Button>
           </div>
       </div>
       

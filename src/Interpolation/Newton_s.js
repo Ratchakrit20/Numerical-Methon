@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import {Input,Tooltip,Button} from 'antd'
 import Plotly from 'plotly.js-dist-min'
-
+import axios from "axios";
 
 
 export default class Newton_s extends React.Component{
@@ -27,8 +27,20 @@ export default class Newton_s extends React.Component{
         this.handleChange1 = this.handleChange1.bind(this);
         this.NewTon=this.NewTonMethon.bind(this);
         this.C=this.C.bind(this);
-        
+        this.getstartdata=this.getstartdata.bind(this);
       }
+      getstartdata(){
+        axios.get("http://localhost:3001/Newton_s")
+        .then(res => {
+          const data = res.data
+          console.log(data)
+          this.setState({arrx:(res.data[0].x)})
+          this.setState({arry:(res.data[0].y)})
+          
+          this.setState({x0:(res.data[0].x0)})
+          console.log("x: "+res.data[0].x+"y"+res.data[0].y+"x0"+res.data[0].x0)
+      })
+    }
       clear(event){
         // event.preventDefault();
         this.setState({Arr1:[]});
@@ -57,6 +69,8 @@ export default class Newton_s extends React.Component{
             const {x,y} = this.state
             arrpx.push(parseFloat(x));
             arrpy.push(parseFloat(y));
+            console.log(arrpx)
+            console.log(arrpy)
             
         }
     // C (x2,x1,fx) {
@@ -72,12 +86,18 @@ export default class Newton_s extends React.Component{
     // }
     C (x2,x1,x,y) {
       if(x2===0&&x1===0){
+        //console.log("c0"+y[0])
           return y[0];
       }
       else if(x2-x1>1){
+        //console.log("C"+(this.C(x2,(x1+1),x,y)-this.C((x2-1),x1,x,y))/(x[x2]-x[x1]))
           return (this.C(x2,(x1+1),x,y)-this.C((x2-1),x1,x,y))/(x[x2]-x[x1]);
       }
       else{
+        // for(var i=0;i<1;i++){
+        //   console.log("C1"+(y[x2]-y[x1])/(x[x2]-x[x1]))
+        // }
+        
           return (y[x2]-y[x1])/(x[x2]-x[x1]);
       }
   }
@@ -87,8 +107,10 @@ export default class Newton_s extends React.Component{
             var c = this.C(i,0,this.state.arrx,this.state.arry);
             for(var j=0;j<i;j++){
                 c = c * (x0-this.state.arrx[j]);
+                console.log("C"+c);
             }
             ans = ans + c;
+            console.log("ans"+ans);
         }
         this.state.ans = ans;
         console.log(ans);
@@ -198,6 +220,7 @@ export default class Newton_s extends React.Component{
             <div>
                 &emsp;<Button onClick={this.handleSubmit}>Calculate</Button>
                 &emsp;<Button onClick={this.clear}>Clear</Button>
+                &emsp;<Button onClick={this.getstartdata}>API</Button>
             </div> 
           </div>
           <p></p>

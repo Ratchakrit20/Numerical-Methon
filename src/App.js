@@ -9,7 +9,10 @@ import Newton from './Root/Newton';
 import Newton_s from './Interpolation/Newton_s';
 import Lagrange from './Interpolation/Lagrange';
 import Secant from './Root/Secant'
-
+import Jacobi from './Linear/Jacobi';
+import Gauss from './Linear/Gausssi';
+import Carmers from './Linear/Carmers';
+import Crammer from './Linear/Crammer';
 
 
 
@@ -32,6 +35,9 @@ function App() {
         <Route path="/Newton's" element={<Newton_s/>}/>
         <Route path="/Lagrange" element={<Lagrange/>}/>
         <Route path="/Secant" element={<Secant/>}/>
+        <Route path="/Jacobi" element={<Jacobi/>}/>
+        <Route path="/Gauss_si" element={<Gauss/>}/>
+        <Route path="/Crammer" element={<Crammer/>}/>
       </Routes>
      
       
